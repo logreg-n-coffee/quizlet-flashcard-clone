@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
@@ -9,7 +9,7 @@ import { addTopic } from "../features/topics/topicsSlice";
 export default function NewTopicForm() {
   const [name, setName] = useState("");
   const [icon, setIcon] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -24,7 +24,7 @@ export default function NewTopicForm() {
       id: uuidv4(),
       icon: icon
     }));
-    history.push(ROUTES.topicsRoute());
+    navigate(ROUTES.topicsRoute());
   };
 
   return (

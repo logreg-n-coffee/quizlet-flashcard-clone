@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
@@ -11,7 +11,7 @@ export default function NewQuizForm() {
   const [name, setName] = useState("");
   const [cards, setCards] = useState([]);
   const [topicId, setTopicId] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const topics = useSelector(selectAllTopics);
 
@@ -42,7 +42,7 @@ export default function NewQuizForm() {
       })
     );
 
-    history.push(ROUTES.quizzesRoute());
+    navigate(ROUTES.quizzesRoute());
   };
 
   const addCardInputs = (e) => {
